@@ -58,6 +58,7 @@ router.put('/:id', (req, res) => {
     const { id } = req.params
     const action = req.body
     if (!action || !action.description || !action.notes) {
+        res.status(400).json({ message: 'Request missing an action, action description, or action notes' })
     } else {
         Actions.update(id, action)
             .then(data => {

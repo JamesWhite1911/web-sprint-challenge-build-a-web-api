@@ -58,6 +58,7 @@ router.put('/:id', (req, res) => {
     const { id } = req.params
     const project = req.body
     if (!project || !project.name || !project.description) {
+        res.status(400).json({ message: 'Request missing a project, project name, or project description' })
     } else {
         Projects.update(id, project)
             .then(data => {
