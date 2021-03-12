@@ -11,4 +11,13 @@ there is no data on that route, just write some code, you'll sort it out… don'
 I need this code, but don't know where, perhaps should make some middleware, don't worry, just hack it
 
 Go code!
+
+https://www.youtube.com/watch?v=8Hj9vra5-pc
+:catJAM:
 */
+
+const server = require('./api/server')
+
+server.listen(5000, () => {
+    console.log(`running on http://localhost:5000`)
+})
