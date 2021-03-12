@@ -1,17 +1,8 @@
-const express = require('express')
 const Actions = require('./actions-model')
 
+const express = require('express')
 const router = express.Router()
 
-//HTML CODE REFERENCE
-/*
-200 - OK (default)
-201 - Created
-204 - No Content (deleted)
-403 - Forbidden
-404 - Not Found
-500 - something bROKE
-*/
 
 //get /api/actions
 router.get('/', (req, res) => {
@@ -84,7 +75,7 @@ router.delete('/:id', (req, res) => {
     const { id } = req.params
     Actions.remove(id)
         .then(data => {
-            res.status(200).json({ message: `Successfully deleted item ${id}` })
+            res.status(204).json("")
         })
         .catch(err => {
             console.log(err);

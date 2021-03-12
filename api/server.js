@@ -16,7 +16,7 @@ function logger(req, res, next) {
 
 server.use(logger)
 server.use('/api/actions', actionsRouter)
-// server.use('/api/projects', projectsRouter)
+server.use('/api/projects', projectsRouter)
 
 
 server.get('/', (req, res) => {
