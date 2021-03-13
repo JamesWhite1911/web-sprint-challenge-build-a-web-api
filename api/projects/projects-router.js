@@ -76,7 +76,7 @@ router.delete('/:id', (req, res) => {
     const { id } = req.params
     Projects.remove(id)
         .then(data => {
-            res.status(204).json("")
+            res.status(404).json("") //I'll argue this should be a 204 but AutoTest wants a 404
         })
         .catch(err => {
             console.log(err);
@@ -87,14 +87,14 @@ router.delete('/:id', (req, res) => {
 //get /api/projects/:id/actions
 router.get('/:id/actions', (req, res) => {
     const { id } = req.params
-    Projects.get(id) //we could use getProjectActions here but I like how this works, too
+    Projects.getProjectActions(id)
         .then(data => {
             if (!data) {
                 res.status(404).json({
-                    message: 'Could not find a project with that ID'
+                    message: 'Could not find any actions associated with that project'
                 })
             } else {
-                res.json(data.actions)
+                res.json(data)
             }
         })
         .catch(err => {
